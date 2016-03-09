@@ -20,6 +20,7 @@ public class PlayActivity extends AppCompatActivity{
     //  public static PlayActivity activity;
     private Button confirm;
     String date;
+    EditText time;
     EditText details;
     String detailsText;
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,8 @@ public class PlayActivity extends AppCompatActivity{
 
     public void confirmClicked(View view){
         details = (EditText) findViewById(R.id.detailsEditText);
-        detailsText = details.getText().toString();
+        time = (EditText) findViewById(R.id.timeEditText);
+        detailsText = time.getText().toString() + " " + details.getText().toString();
         Random rand = new Random();
         Event newEvent = new Event(rand.nextLong(), date,
                 detailsText, true);

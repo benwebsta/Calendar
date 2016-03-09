@@ -33,4 +33,22 @@
         android:nestedScrollingEnabled="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Time:"
+        android:id="@+id/timeTextView"
+        android:layout_marginBottom="110dp"
+        android:layout_above="@+id/detailsTextView"
+        android:layout_alignStart="@+id/detailsTextView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeEditText"
+        android:text="                      "
+        android:layout_alignTop="@+id/timeTextView"
+        android:layout_alignStart="@+id/detailsEditText" />
 </RelativeLayout>

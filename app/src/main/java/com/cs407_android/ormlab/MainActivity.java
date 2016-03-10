@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayAdapter adapter;
     Context context;
+    public static boolean newDate = false;
 
     public static ArrayList<String> eventList;
     public static CalendarView calendar;
@@ -56,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 */
         initDatabase();
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                PlayActivity.date = month + "/" + dayOfMonth + "/" + year;
+                newDate = true;
+            }
+        });
 
         adapter.notifyDataSetChanged();
 

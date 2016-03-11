@@ -21,9 +21,11 @@ public class PlayActivity extends AppCompatActivity{
     //  public static PlayActivity activity;
     private Button confirm;
     public static String date;
-    EditText time;
+    EditText startTime;
+    EditText endTime;
     EditText details;
     String detailsText;
+    String time;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
@@ -58,13 +60,14 @@ public class PlayActivity extends AppCompatActivity{
 
     public void confirmClicked(View view){
         details = (EditText) findViewById(R.id.detailsEditText);
-        time = (EditText) findViewById(R.id.timeEditText);
+        startTime = (EditText) findViewById(R.id.startTimeEditText);
+        endTime = (EditText) findViewById(R.id.endTimeEditText);
        /* MainActivity.calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 date = month + "/" + dayOfMonth + "/" + year;
             }
         });*/
-        detailsText = time.getText().toString() + " " + details.getText().toString();
+        detailsText = startTime.getText().toString() + endTime.getText().toString() + " " + details.getText().toString();
         Random rand = new Random();
         Event newEvent = new Event(rand.nextLong(), date,
                 detailsText, true);

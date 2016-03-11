@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/detailsEditText"
         android:text="                          "
-        android:layout_marginEnd="82dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/detailsTextView"
+        android:layout_alignStart="@+id/confirmButton"
+        android:layout_marginStart="41dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,16 +19,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="details:"
         android:id="@+id/detailsTextView"
-        android:layout_alignTop="@+id/detailsEditText"
-        android:layout_toStartOf="@+id/detailsEditText"
-        android:layout_marginEnd="54dp" />
+        android:layout_above="@+id/confirmButton"
+        android:layout_toStartOf="@+id/confirmButton"
+        android:layout_marginBottom="61dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm"
         android:id="@+id/confirmButton"
-        android:layout_marginBottom="91dp"
+        android:layout_marginBottom="50dp"
         android:onClick="confirmClicked"
         android:nestedScrollingEnabled="true"
         android:layout_alignParentBottom="true"
@@ -38,17 +38,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Time:"
+        android:text="End Time:"
         android:id="@+id/timeTextView"
-        android:layout_marginBottom="110dp"
-        android:layout_above="@+id/detailsTextView"
+        android:layout_centerVertical="true"
         android:layout_alignStart="@+id/detailsTextView" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timeEditText"
+        android:id="@+id/endTimeEditText"
         android:text="                      "
         android:layout_alignTop="@+id/timeTextView"
         android:layout_alignStart="@+id/detailsEditText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Start Time:"
+        android:id="@+id/textView"
+        android:layout_above="@+id/timeTextView"
+        android:layout_alignStart="@+id/timeTextView"
+        android:layout_marginBottom="95dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startTimeEditText"
+        android:text="                      "
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignStart="@+id/endTimeEditText" />
 </RelativeLayout>

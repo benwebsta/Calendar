@@ -42,13 +42,15 @@
                 android:text="Delete"
                 android:id="@+id/deleteButton"
                 android:layout_row="0"
-                android:layout_column="5" />
+                android:layout_column="5"
+                android:onClick="deleteClicked" />
         </GridLayout>
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView" />
+            android:id="@+id/listView"
+            android:clickable="true" />
 
     </LinearLayout>
 

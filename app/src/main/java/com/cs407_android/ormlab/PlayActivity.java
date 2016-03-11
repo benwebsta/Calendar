@@ -32,7 +32,7 @@ public class PlayActivity extends AppCompatActivity{
         //    activity = this;
         confirm = (Button)findViewById(R.id.confirmButton);
         if(!MainActivity.newDate) {
-            SimpleDateFormat formatter = new SimpleDateFormat("MMM-dd-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("M/dd/yyyy");
             date = formatter.format(MainActivity.calendar.getDate());
         }
        // date = Objects.toString(MainActivity.calendar.getDate());

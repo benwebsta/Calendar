@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                PlayActivity.date = month + "/" + dayOfMonth + "/" + year;
+                PlayActivity.date = month+1 + "/" + dayOfMonth + "/" + year;
                 newDate = true;
-                initDatabase();
+                initDatabaseParam(PlayActivity.date);
                 listView.invalidate();
             }
         });
@@ -141,6 +141,51 @@ public class MainActivity extends AppCompatActivity {
             }
             //set up ListView
             adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventListFromDB);
+           // PlayActivity.date;
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    private void initDatabaseParam(String date)
+    {
+        eventBookDBHelper = new DaoMaster.DevOpenHelper(this, "ORM.sqlite", null);
+        eventBookDB = eventBookDBHelper.getWritableDatabase();
+
+        //Get DaoMaster
+        daoMaster = new DaoMaster(eventBookDB);
+
+        //Create database and tables
+        daoMaster.createAllTables(eventBookDB, true);
+
+        //Create DaoSession
+        daoSession = daoMaster.newSession();
+
+        //Create customer addition/removal instances
+        eventDao = daoSession.getEventDao();
+
+
+        if (eventDao.queryBuilder().where(
+                EventDao.Properties.Display.eq(true)).list() == null)
+        {
+            closeReopenDatabase();
+        }
+        eventListFromDB = eventDao.queryBuilder().where(
+                EventDao.Properties.Date.eq(date)).list();
+             //   EventDao.Properties.Display.eq(true)).list();
+
+        if (eventListFromDB != null) {
+
+            for (Event event : eventListFromDB)
+            {
+                if (event == null)
+                {
+                    return;
+                }
+            }
+            //set up ListView
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventListFromDB);
+            // PlayActivity.date;
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
@@ -181,8 +226,6 @@ public class MainActivity extends AppCompatActivity {
     public void addPressed(View view){
         Intent playActivity = new Intent(this, PlayActivity.class);
         startActivity(playActivity);
-        initDatabase();
-        listView.invalidate();
     }
     /*public void listSelected(View view){
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -193,11 +236,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
-    public void listSelected(ListView view){
+ /*   public void listSelected(ListView view){
         if(adapterSetup)
             adapter.notifyDataSetChanged();
     }
-
+*/
 
 
 }

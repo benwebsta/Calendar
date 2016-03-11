@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button add, delete;
+    Button add;
     ListView listView;
     ArrayAdapter adapter;
     Context context;
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         eventList = new ArrayList<>();
 
         add = (Button) findViewById(R.id.addButton);
-        delete = (Button) findViewById(R.id.deleteButton);
         calendar = (CalendarView) findViewById(R.id.calendarView);
         listView = (ListView) findViewById(R.id.listView);
 

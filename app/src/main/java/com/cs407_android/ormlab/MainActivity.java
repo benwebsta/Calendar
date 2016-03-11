@@ -71,10 +71,6 @@ public class MainActivity extends AppCompatActivity {
                             case DialogInterface.BUTTON_POSITIVE:
                                 eventDao.delete(listItem);
                                 initDatabase();
-                                //eventListFromDB = eventDao.queryBuilder().where(
-                                        //EventDao.Properties.Display.eq(true)).list();
-                                //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventListFromDB);
-                                //adapter.notifyDataSetChanged();
                                 listView.invalidate();
                                 break;
 

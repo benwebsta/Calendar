@@ -73,7 +73,6 @@ public class PlayActivity extends AppCompatActivity{
                 detailsText, true);
     //    MainActivity.eventList.add(detailsText);
         MainActivity.saveEvent(newEvent);
-
         finish();
     }
 }

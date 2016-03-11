@@ -71,9 +71,11 @@ public class MainActivity extends AppCompatActivity {
                         switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 eventDao.delete(listItem);
-                                eventListFromDB = eventDao.queryBuilder().where(
-                                        EventDao.Properties.Display.eq(true)).list();
-                                adapter.notifyDataSetChanged();
+                                initDatabase();
+                                //eventListFromDB = eventDao.queryBuilder().where(
+                                        //EventDao.Properties.Display.eq(true)).list();
+                                //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventListFromDB);
+                                //adapter.notifyDataSetChanged();
                                 listView.invalidate();
                                 break;
 
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 PlayActivity.date = month + "/" + dayOfMonth + "/" + year;
                 newDate = true;
+                initDatabase();
+                listView.invalidate();
             }
         });
 
@@ -177,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
     public void addPressed(View view){
         Intent playActivity = new Intent(this, PlayActivity.class);
         startActivity(playActivity);
+        initDatabase();
+        listView.invalidate();
     }
     /*public void listSelected(View view){
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
